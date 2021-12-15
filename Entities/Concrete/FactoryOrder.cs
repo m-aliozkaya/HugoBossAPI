@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities.Concrete
 {
-    public class FactoryOrder
+    public class FactoryOrder:IEntity
     {
         [Key]
 

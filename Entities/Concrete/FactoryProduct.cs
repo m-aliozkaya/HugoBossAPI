@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Entities
 {
-    public class FactoryProduct
+    public class FactoryProduct:IEntity
     {
         [Key]
         public int Id { get; set; }

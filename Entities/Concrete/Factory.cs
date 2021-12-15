@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace Entities
 {
-    public class Factory
+    public class Factory:IEntity
     {
         [Key]
 
