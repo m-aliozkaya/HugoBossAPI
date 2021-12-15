@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IFactoryOrderDal : IEntityRepository<Season>
+    public interface IFactoryOrderDal : IEntityRepository<FactoryOrder>
     {
     }
 }
