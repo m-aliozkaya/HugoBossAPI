@@ -22,6 +22,7 @@ namespace Business.Concrete
         public IResult Add(Order order)
         {
             _orderDal.Add(order);
+            _orderDal.AddOrderToFactoryOrders(order);
             return new SuccessResult();
         }
 

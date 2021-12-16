@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using HugoBossAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,8 +22,18 @@ namespace HugoBossAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddOrder(Order order)
+        public IActionResult AddOrder(OrderModel orderModel)
         {
+            var order = new Order
+            {
+                ProductId = orderModel.ProductId,
+                CustomerId = orderModel.CustomerId,
+                Priority = orderModel.Priority,
+                Amount = orderModel.Amount,
+                DeliveryDate = orderModel.DeliveryDate,
+                OrderDate = DateTime.Now
+            };
+
             var result = _orderService.Add(order);
             if (result.Success)
             {
