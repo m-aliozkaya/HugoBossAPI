@@ -42,9 +42,20 @@ namespace Business.Concrete
             return new SuccessDataResult<List<FactoryOrder>>(_factoryOrderDal.GetAll());
         }
 
+        public IDataResult<List<FactoryOrder>> GetFactoryOrdersByFactoryId(int id)
+        {
+            return new SuccessDataResult<List<FactoryOrder>>(_factoryOrderDal.GetAll(x => x.FactoryId == id));
+        }
+
         public IResult Update(FactoryOrder factoryOrder)
         {
             _factoryOrderDal.Update(factoryOrder);
+            return new SuccessResult();
+        }
+
+        public IResult UpdateFactoryOrderAmountById(int id, int amount)
+        {
+            _factoryOrderDal.Get(fo => fo.Id == id).Amount -= amount;
             return new SuccessResult();
         }
     }

@@ -30,5 +30,27 @@ namespace HugoBossAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getProducts")]
+        public IActionResult GetProducts()
+        {
+            var result = _productService.GetProducts();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getProductsBySeasonId")]
+        public IActionResult GetProductsBySeasonId(int id)
+        {
+            var result = _productService.GetProductsBySeasonId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

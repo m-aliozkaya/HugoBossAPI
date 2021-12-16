@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Entities;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,31 +11,20 @@ namespace HugoBossAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FactoriesController : ControllerBase
+    public class CustomersController : ControllerBase
     {
-        IFactoryService _factoryService;
+        ICustomerService _CustomerService;
 
-        public FactoriesController(IFactoryService factoryService)
+        public CustomersController(ICustomerService CustomerService)
         {
-            _factoryService = factoryService;
-        }
-
-        [HttpGet("getFactoryById")]
-        public IActionResult GetFactoryById(int id)
-        {
-            var result = _factoryService.GetFactoryById(id);
-
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            _CustomerService = CustomerService;
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Factory factory)
+        public IActionResult AddCustomer(Customer Customer)
         {
-            var result = _factoryService.Add(factory);
+
+            var result = _CustomerService.Add(Customer);
             if (result.Success)
             {
                 return Ok(result);
@@ -43,11 +32,10 @@ namespace HugoBossAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getFactories")]
-        public IActionResult GetFactories()
+        [HttpGet("getCustomerById")]
+        public IActionResult GetCustomerById(int CustomerId)
         {
-            var result = _factoryService.GetFactories();
-
+            var result = _CustomerService.GetCustomerById(CustomerId);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,5 +43,15 @@ namespace HugoBossAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getCustomers")]
+        public IActionResult GetCustomers()
+        {
+            var result = _CustomerService.GetCustomers();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

@@ -41,6 +41,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll());
         }
 
+        public IDataResult<List<Product>> GetProductsBySeasonId(int id)
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(x => x.SeasonId == id));
+        }
+
         public IResult Update(Product product)
         {
             _productDal.Update(product);

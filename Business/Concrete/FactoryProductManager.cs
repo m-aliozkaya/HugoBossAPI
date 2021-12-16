@@ -41,6 +41,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<FactoryProduct>>(_factoryProductDal.GetAll());
         }
 
+        public IDataResult<List<FactoryProduct>> GetFactoryProductsByFactoryId(int id)
+        {
+            return new SuccessDataResult<List<FactoryProduct>>(_factoryProductDal.GetAll(x => x.FactoryId == id));
+        }
+
         public IResult Update(FactoryProduct factoryProduct)
         {
             _factoryProductDal.Update(factoryProduct);

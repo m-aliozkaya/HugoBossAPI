@@ -11,6 +11,7 @@ namespace Business.Abstract
     public interface IProductService
     {
         IDataResult<List<Product>> GetProducts();
+        IDataResult<List<Product>> GetProductsBySeasonId(int id);
         IResult Add(Product product);
         IResult Delete(Product product);
         IResult Update(Product product);

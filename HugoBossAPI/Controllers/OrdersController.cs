@@ -42,10 +42,21 @@ namespace HugoBossAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbyid")]
+        [HttpGet("getOrderById")]
         public IActionResult GetOrderById(int orderId)
         {
             var result = _orderService.GetOrderById(orderId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getOrders")]
+        public IActionResult GetOrders()
+        {
+            var result = _orderService.GetOrders();
             if (result.Success)
             {
                 return Ok(result);

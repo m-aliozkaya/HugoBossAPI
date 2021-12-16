@@ -11,6 +11,7 @@ namespace Business.Abstract
     public interface IFactoryProductService
     {
         IDataResult<List<FactoryProduct>> GetFactoryProducts();
+        IDataResult<List<FactoryProduct>> GetFactoryProductsByFactoryId(int id);
         IResult Add(FactoryProduct factoryProduct);
         IResult Delete(FactoryProduct factoryProduct);
         IResult Update(FactoryProduct factoryProduct);
